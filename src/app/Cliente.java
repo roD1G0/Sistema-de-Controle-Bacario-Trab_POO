@@ -10,7 +10,8 @@ public class Cliente {
 	private String cidade;
 	private String rua;
 	private int casa;
-	
+	private int quantContas;
+	//construtor de cliente
 	public Cliente(String nome) {
 		this.nome = nome;
 		telefone = 0;
@@ -21,6 +22,7 @@ public class Cliente {
 		cidade = " ";
 		rua = " ";
 		casa = 0;
+		quantContas = 0;
 	}
 	public String getNome() {
 		return nome;
@@ -64,13 +66,27 @@ public class Cliente {
 	public void setCasa(int casa) {
 		this.casa = casa;
 	}
+	//verifica qual a situacap do cliente
 	public String verificaSituacao() {
 		if(situacao) {
 			return "Ativa";
 		}
 		return "Inativa";
 	}
+	//retorna as informacoes do cliente
 	public String toString() {
 		return "Nome: "+ nome + " Telefone: "+ telefone + " Situação: "+ verificaSituacao()+ " Renda: "+ renda+ "\n"+ getEndereco();
+	}
+	//toda vez que o cliente abre uma conta incrementa em 1 a quantidade de contas
+	public void incrementaContas() {
+		quantContas++;
+	}
+	//toda vez que o cliente encerra uma conta decrementa em 1 a quantidade de contas, se chegar a menor ou igual a zero
+	//a situacao do cliente se torna "inativa"
+	public void decrementaContas() {
+		quantContas--;
+		if(quantContas <= 0) {
+			setSituacao(false);
+		}
 	}
 }
