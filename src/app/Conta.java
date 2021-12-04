@@ -21,6 +21,34 @@ public class Conta {
 		cliente.setSituacao(situacao);
 		cliente.incrementaContas();
 	}
+	//verifica se a senha informada é igual a senha da conta
+	public boolean verificaSenha(int senha) {
+		if(this.senha == senha) {
+			return true;
+		}
+		return false;
+	}
+	//retorna o numero da conta
+	public long getNumeroConta() {
+		return numero;
+	}
+	//retorna o saldo da conta
+	public double getSaldo() {
+		return saldo;
+	}
+	//deposita o valor na conta
+	public boolean deposito(double valor) {
+		saldo += valor;
+		return true;
+	}
+	//saca o valor da conta
+	public boolean saque(double valor) {
+		if(valor > saldo) {
+			return false;
+		}
+		saldo -= valor;
+		return true;
+	}
 	//reativa a conta se a conta estiver com a situacao "inativa" e incrementa na quantidade de contas do cliente
 	public boolean ativaConta() {
 		if(!situacao) {

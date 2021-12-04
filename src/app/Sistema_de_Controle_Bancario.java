@@ -16,6 +16,14 @@ public class Sistema_de_Controle_Bancario {
 		Conta conta1 = new Conta(c1, 1111);
 		System.out.println(conta1.toString());
 		System.out.println(c1.toString());
+		System.out.println(conta1.getSaldo());
+		conta1.deposito(200.00);
+		System.out.println(conta1.getSaldo());
+		conta1.saque(20.00);
+		System.out.println(conta1.getSaldo());
+		conta1.encerraConta();
+		System.out.println(conta1.toString());
+		System.out.println(c1.toString());
 		
 		Conta conta2 = new Conta(cPF, 2222);
 		System.out.println(conta2.toString());
