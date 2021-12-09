@@ -35,6 +35,10 @@ public class Conta {
 	public double getSaldo() {
 		return saldo;
 	}
+	//retorna a situção da conta em formato booleano, true = ativa, false = inativa
+	public boolean getSituacao() {
+		return situacao;
+	}
 	//deposita o valor na conta
 	public boolean deposito(double valor) {
 		saldo += valor;
