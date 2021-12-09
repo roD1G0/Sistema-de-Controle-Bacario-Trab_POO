@@ -7,7 +7,7 @@ public class Sistema_de_Controle_Bancario {
 		Cliente c1 = new Cliente("Rodrigo");
 		System.out.println(c1.toString());
 		
-		ClientePF cPF = new ClientePF("Giovana", 12345);
+		ClientePF cPF = new ClientePF("Giovana", 12345, 00000);
 		System.out.println(cPF.toString());
 		
 		ClientePJ cPJ = new ClientePJ("Rubia", 54321);

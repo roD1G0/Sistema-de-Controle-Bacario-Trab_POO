@@ -24,7 +24,7 @@ public class ClientePF extends Cliente{
     }
 	//exibe as informacoes do cliente pessoa fisica, incluindo o cpf
 	public String toString() {
-		return "CPF: "+ CPF + " RG: "+ RG + super.toString();
+		return "CPF: "+ CPF + " RG: "+ RG +" "+ super.toString();
 	}
 
 }
