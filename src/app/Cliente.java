@@ -48,9 +48,9 @@ public class Cliente {
 	public void setTelefone(long telefone) {
 		this.telefone = telefone;
 	}
-	public void setSituacao(boolean situacao) {
+	/*public void setSituacao(boolean situacao) {
 		this.situacao = situacao;
-	}
+	}*/
 	public void setRenda(double renda) {
 		this.renda = renda;
 	}
@@ -80,13 +80,14 @@ public class Cliente {
 	//toda vez que o cliente abre uma conta incrementa em 1 a quantidade de contas
 	public void incrementaContas() {
 		quantContas++;
+		situacao = true;
 	}
 	//toda vez que o cliente encerra uma conta decrementa em 1 a quantidade de contas, se chegar a menor ou igual a zero
 	//a situacao do cliente se torna "inativa"
 	public void decrementaContas() {
 		quantContas--;
 		if(quantContas <= 0) {
-			setSituacao(false);
+			situacao = false;
 		}
 	}
 }

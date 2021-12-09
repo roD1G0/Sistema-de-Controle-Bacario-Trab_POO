@@ -18,7 +18,6 @@ public class Conta {
 		dataAbert = new Date();
 		saldo = 0;
 		situacao = true;
-		cliente.setSituacao(situacao);
 		cliente.incrementaContas();
 	}
 	//verifica se a senha informada é igual a senha da conta
@@ -86,6 +85,9 @@ public class Conta {
 	//retorna as informacoes do cliente
 	public String toString() {
 		return "Nome cliente: "+ cliente.getNome() + " Numero: " + numero + " Saldo: "+ saldo + " Situação: " + verificaSituacao() + "\nData abertura: " + dataAbert + " Data encerramento: " + dataEncer;
+	}
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
 	}
 
 }
