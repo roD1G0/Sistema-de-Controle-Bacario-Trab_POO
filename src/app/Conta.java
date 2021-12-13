@@ -2,7 +2,7 @@ package app;
 
 import java.util.Date;
 
-public class Conta {
+public abstract class Conta {
 	private static  long geraNumeros = 10000;
 	private long numero;
 	private Date dataAbert;
@@ -40,18 +40,9 @@ public class Conta {
 		return situacao;
 	}
 	//deposita o valor na conta
-	public boolean deposito(double valor) {
-		saldo += valor;
-		return true;
-	}
+	public abstract boolean deposito(double valor);
 	//saca o valor da conta
-	public boolean saque(double valor) {
-		if(valor > saldo) {
-			return false;
-		}
-		saldo -= valor;
-		return true;
-	}
+	public abstract boolean saque(double valor);
 	//reativa a conta se a conta estiver com a situacao "inativa" e incrementa na quantidade de contas do cliente
 	public boolean ativaConta() {
 		if(!situacao) {

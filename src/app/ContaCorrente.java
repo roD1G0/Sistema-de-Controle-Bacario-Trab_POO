@@ -40,7 +40,7 @@ public class ContaCorrente extends Conta {
 
 
     //Saca o valor da conta
-    public boolean saqueCC(double valor) {
+    public boolean saque(double valor) {
         //A operação só sera efetuada se a conta estiver ativa.
     	//A operação de saque é efetuada somente se o saldo da conta é igual ou superior ao valor que deve ser sacado.
         if(getSituacao() && valor <= getSaldo()) {

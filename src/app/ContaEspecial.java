@@ -39,12 +39,12 @@ public class ContaEspecial extends ContaCorrente {
     }
 
 
-    public boolean saqueCE(double valor)
+    public boolean saque(double valor)
     {
         //A operação só sera efetuada se a conta estiver ativa.
     	//"A operação de saque considera o saldo da conta acrescido do limite para decidir se o saque é efetuado ou não"
         if(getSituacao() && valor <= getSaldo() + getLimite()) {
-                saqueCC(valor);
+                super.saque(valor);
                 return true;
             }
         return false;
