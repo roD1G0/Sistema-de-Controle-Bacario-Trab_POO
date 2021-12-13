@@ -17,11 +17,11 @@ public class ContaEspecial extends ContaCorrente {
 
 
     //Altera o limite da conta
-    public boolean alterarLimite(int nLimite)
+    public boolean alterarLimite(int senha, double nLimite)
     {
         //A operação só sera efetuada se a conta estiver ativa.
-        if(getSituacao() && nLimite > 0) {
-                setLimite(nLimite);
+        if(validaSenha(senha)==true && getSituacao() && nLimite >= 0) {
+                 limite =nLimite;
                 return true;
             }
         return false;
@@ -29,9 +29,9 @@ public class ContaEspecial extends ContaCorrente {
 
 
     //Apresenta o limite da conta
-    public boolean verificarLimite()
+    public boolean verificarLimite(int senha)
     { //A operação só sera efetuada se a conta estiver ativa.
-        if(getSituacao()) {
+        if(validaSenha(senha)==true && getSituacao()) {
             getLimite();
             return true;
         }
@@ -39,19 +39,15 @@ public class ContaEspecial extends ContaCorrente {
     }
 
 
-    public boolean saque(double valor)
+    public boolean saque(int senha, double valor)
     {
         //A operação só sera efetuada se a conta estiver ativa.
     	//"A operação de saque considera o saldo da conta acrescido do limite para decidir se o saque é efetuado ou não"
-        if(getSituacao() && valor <= getSaldo() + getLimite()) {
-                super.saque(valor);
+        if(validaSenha(senha)==true && getSituacao() && valor <= getSaldo() + getLimite()) {
+                super.saque(senha, valor);
                 return true;
             }
         return false;
     }
-
-
-    private void setLimite(double newLimite) { limite = newLimite; }
     private double getLimite() { return limite; }
-
 }

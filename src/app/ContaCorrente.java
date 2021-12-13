@@ -16,10 +16,10 @@ public class ContaCorrente extends Conta {
 
 
     //Deposita o valor na conta
-    public boolean deposito(double valor) {
+    public boolean deposito(int senha, double valor) {
         //A operação só sera efetuada se a conta estiver ativa.
         //A operação de depósito é efetuada se o valor a ser depositado é maior do que zero.
-        if(getSituacao() && valor > 0) {
+        if(validaSenha(senha)==true && getSituacao() && valor > 0) {
                 setSaldo(getSaldo() + valor);
                 return true;
             }
@@ -27,10 +27,10 @@ public class ContaCorrente extends Conta {
     }
 
     //Apresenta o saldo da conta
-    public boolean verificarSaldo()
+    public boolean verificarSaldo(int senha)
     {
         //A operação só sera efetuada se a conta estiver ativa.
-        if(getSituacao())
+        if(validaSenha(senha)==true && getSituacao())
         {
             getSaldo();
             return true;
@@ -40,10 +40,10 @@ public class ContaCorrente extends Conta {
 
 
     //Saca o valor da conta
-    public boolean saque(double valor) {
+    public boolean saque(int senha, double valor) {
         //A operação só sera efetuada se a conta estiver ativa.
     	//A operação de saque é efetuada somente se o saldo da conta é igual ou superior ao valor que deve ser sacado.
-        if(getSituacao() && valor <= getSaldo()) {
+        if(validaSenha(senha)==true && getSituacao() && valor <= getSaldo()) {
                     	setSaldo(getSaldo() - valor);
             return true;
             }

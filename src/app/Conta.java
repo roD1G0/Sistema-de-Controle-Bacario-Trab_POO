@@ -21,12 +21,10 @@ public abstract class Conta {
 		cliente.incrementaContas();
 	}
 	//verifica se a senha informada é igual a senha da conta
-	public boolean verificaSenha(int senha) {
-		if(this.senha == senha) {
-			return true;
-		}
-		return false;
-	}
+	public boolean validaSenha(int senha){
+        if (this.senha==senha){return true;}
+        else {return false;}
+    }
 	//retorna o numero da conta
 	public long getNumeroConta() {
 		return numero;
@@ -40,9 +38,9 @@ public abstract class Conta {
 		return situacao;
 	}
 	//deposita o valor na conta
-	public abstract boolean deposito(double valor);
+	public abstract boolean deposito(int senha, double valor);
 	//saca o valor da conta
-	public abstract boolean saque(double valor);
+	public abstract boolean saque(int senha, double valor);
 	//reativa a conta se a conta estiver com a situacao "inativa" e incrementa na quantidade de contas do cliente
 	public boolean ativaConta() {
 		if(!situacao) {
@@ -54,7 +52,7 @@ public abstract class Conta {
 	}
 	//encerra a conta se ela estiver ativa, muda sua situacao para "Inativa" e decrementa na quantidade de contas do cliente
 	public boolean encerraConta() {
-		if(situacao) {
+		if(validaSenha(senha)==true && situacao) {
 			situacao = false;
 			cliente.decrementaContas();
 			dataEncer = new Date();
@@ -63,13 +61,14 @@ public abstract class Conta {
 		return false;
 	}
 	//seta uma nova senha se a situcao da conta for ativa
-	public boolean setSenha(int newSenha) {
-		if(situacao) {
-			senha = newSenha;
-			return true;
-		}
-		return false;
-	}
+	public boolean setSenha(int senha, int novaSenha){
+        if(validaSenha(senha)==true){
+            this.senha=novaSenha;
+            return true;
+        }
+        else {return false;}
+    }
+    
 	//verifica a situacao da conta
 	public String verificaSituacao() {
 		if(situacao) {
