@@ -45,7 +45,7 @@ public class Endereco {
 		this.CEP = CEP;
 	}
 	public String getEndereco() {
-		return "CEP: "+ CEP +"País: "+ pais +" Cidade: "+ cidade +" Rua: "+ rua +" Número: "+numero;
+		return "CEP: "+ CEP +" País: "+ pais +" Cidade: "+ cidade +" Rua: "+ rua +" Número: "+numero;
 	}
 	
 

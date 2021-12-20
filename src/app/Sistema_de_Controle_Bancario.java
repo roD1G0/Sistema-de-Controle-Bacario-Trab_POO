@@ -51,12 +51,17 @@ public class Sistema_de_Controle_Bancario {
 		e.nextLine();
 		cPF = new ClientePF(nome, rg, cpf);
 		
+		cPF.setEndereco(97546550, "Brasil", "Alegrete", " AV. Tiaraju", 810);
+		
 		System.out.print("Informe o nome do cliente: ");
 		nome = e.nextLine();
 		System.out.print("Informe o CNPJ do cliente: ");
 		cnpj = e.nextLong();
 		
 		cPJ = new ClientePJ(nome, cnpj);
+		
+		cPJ.setEndereco(97546550, "Brasil", "Alegrete", " AV. Tiaraju", 810);
+		
 		lista.addCliente(cPF);
 		lista.addCliente(cPJ);
 		for(int i = 0; i < lista.quantClientes();i++)
