@@ -1,6 +1,6 @@
 package app;
 
-public class ClientePF extends Cliente{
+public class ClientePF extends Cliente implements Valida{
 	private long CPF;
 	private long RG; 
 	
@@ -25,6 +25,9 @@ public class ClientePF extends Cliente{
 	//exibe as informacoes do cliente pessoa fisica, incluindo o cpf
 	public String toString() {
 		return "CPF: "+ CPF + " RG: "+ RG +" "+ super.toString();
+	}
+	public boolean valida(long CPF) {
+		return true;
 	}
 
 }

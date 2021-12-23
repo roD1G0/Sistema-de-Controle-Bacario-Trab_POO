@@ -62,7 +62,7 @@ public abstract class Conta {
 	}
 	//seta uma nova senha se a situcao da conta for ativa
 	public boolean setSenha(int senha, int novaSenha){
-        if(validaSenha(senha)==true){
+        if(validaSenha(senha)){
             this.senha=novaSenha;
             return true;
         }

@@ -1,6 +1,6 @@
 package app;
 
-public class ClientePJ extends Cliente{
+public class ClientePJ extends Cliente implements Valida{
 	private long CNPJ;
 	
 	public ClientePJ(String nome, long CNPJ) {
@@ -17,6 +17,9 @@ public class ClientePJ extends Cliente{
 	//retorna as informacoes do cliente pessoa juridica, incluindo seu cnpj
 	public String toString() {
 		return "CNPJ: " + CNPJ + " " + super.toString();
+	}
+	public boolean valida(long CNPJ) {
+		return true;
 	}
 
 }
