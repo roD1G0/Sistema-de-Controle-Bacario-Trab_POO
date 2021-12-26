@@ -1,7 +1,11 @@
 package app;
 import java.util.ArrayList;
-
-public class ListaContas {
+import java.io.Serializable;
+public class ListaContas implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6012310947413061783L;
 	private ArrayList <Conta> contas;
 	
 	public ListaContas() {
@@ -15,6 +19,13 @@ public class ListaContas {
 	}
 	public String listarContas(int i) { 
 		return contas.get(i).toString();
+	}
+	public boolean removeConta(int i) {
+		if(i >= 0 && i < contas.size()) {
+			contas.remove(i);
+			return true;
+		}
+		return false;
 	}
 
 }

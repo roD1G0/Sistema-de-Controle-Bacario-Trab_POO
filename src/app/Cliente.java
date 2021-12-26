@@ -1,6 +1,10 @@
 package app;
-
-public class Cliente {
+import java.io.Serializable;
+public class Cliente implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3777766942624711013L;
 	private String nome;
 	private long telefone;
 	private boolean situacao;

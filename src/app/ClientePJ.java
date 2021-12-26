@@ -1,6 +1,10 @@
 package app;
 
 public class ClientePJ extends Cliente implements Valida{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5144808896213667464L;
 	private long CNPJ;
 	
 	public ClientePJ(String nome, long CNPJ) {

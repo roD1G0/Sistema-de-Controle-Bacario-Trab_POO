@@ -2,7 +2,13 @@ package app;
 
 public class ContaCorrente extends Conta {
 
-    public ContaCorrente(Cliente cliente, int senha) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8165658920708028765L;
+
+
+	public ContaCorrente(Cliente cliente, int senha) {
         super(cliente, senha);
     }
 

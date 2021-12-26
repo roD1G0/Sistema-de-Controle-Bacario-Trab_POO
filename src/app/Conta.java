@@ -1,8 +1,12 @@
 package app;
 
 import java.util.Date;
-
-public abstract class Conta {
+import java.io.Serializable;
+public abstract class Conta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6205127090202885483L;
 	private static  long geraNumeros = 10000;
 	private long numero;
 	private Date dataAbert;

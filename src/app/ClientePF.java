@@ -1,6 +1,9 @@
 package app;
-
 public class ClientePF extends Cliente implements Valida{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8264587340142452027L;
 	private long CPF;
 	private long RG; 
 	

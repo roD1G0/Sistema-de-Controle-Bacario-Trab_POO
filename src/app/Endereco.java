@@ -1,6 +1,11 @@
 package app;
-
-public class Endereco {
+import java.io.Serializable;
+public class Endereco implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3116167932462818251L;
 	private long CEP;
 	private String pais;
 	private String cidade;

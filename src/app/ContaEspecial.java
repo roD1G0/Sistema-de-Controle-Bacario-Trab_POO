@@ -2,7 +2,11 @@ package app;
 
 public class ContaEspecial extends ContaCorrente {
 
-    private double limite;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4636050053938698024L;
+	private double limite;
 
 
     /*A conta especial é uma conta corrente que possui um limite, ou seja,
