@@ -2,7 +2,7 @@ package app;
 
 import java.util.Date;
 import java.io.Serializable;
-public abstract class Conta implements Serializable{
+public abstract class Conta implements Serializable, Valida{
 	/**
 	 * 
 	 */
@@ -11,11 +11,11 @@ public abstract class Conta implements Serializable{
 	private long numero;
 	private Date dataAbert;
 	private Date dataEncer;
-	private int senha;
+	private long senha;
 	private double saldo;
 	private boolean situacao;
 	private Cliente cliente;
-	public Conta(Cliente cliente, int senha) {
+	public Conta(Cliente cliente, long senha) {
 		numero = geraNumeros++;
 		this.cliente = cliente;
 		this.senha = senha;
@@ -25,7 +25,7 @@ public abstract class Conta implements Serializable{
 		cliente.incrementaContas();
 	}
 	//verifica se a senha informada é igual a senha da conta
-	public boolean validaSenha(int senha){
+	public boolean validaSenha(long senha){
         if (this.senha==senha){return true;}
         else {return false;}
     }
@@ -42,9 +42,9 @@ public abstract class Conta implements Serializable{
 		return situacao;
 	}
 	//deposita o valor na conta
-	public abstract boolean deposito(int senha, double valor);
+	public abstract boolean deposito(long senha, double valor);
 	//saca o valor da conta
-	public abstract boolean saque(int senha, double valor);
+	public abstract boolean saque(long senha, double valor);
 	//reativa a conta se a conta estiver com a situacao "inativa" e incrementa na quantidade de contas do cliente
 	public boolean ativaConta() {
 		if(!situacao) {
@@ -65,7 +65,7 @@ public abstract class Conta implements Serializable{
 		return false;
 	}
 	//seta uma nova senha se a situcao da conta for ativa
-	public boolean setSenha(int senha, int novaSenha){
+	public boolean setSenha(long senha, long novaSenha){
         if(validaSenha(senha)){
             this.senha=novaSenha;
             return true;
@@ -87,5 +87,13 @@ public abstract class Conta implements Serializable{
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+	public boolean valida(long verifcavel) {
+		if(verifcavel > 999 && verifcavel <= 99999999) {
+			senha = verifcavel;
+			return true;
+		}
+		return false;
+	}
+
 
 }

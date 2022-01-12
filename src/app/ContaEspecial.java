@@ -14,14 +14,14 @@ public class ContaEspecial extends ContaCorrente {
     para decidir se o saque é efetuado ou não. Além das operações da conta corrente,
     a conta especial permite alterar o limite.*/
 
-    public ContaEspecial(Cliente cliente, int senha, double limite) {
+    public ContaEspecial(Cliente cliente, long senha, double limite) {
         super(cliente, senha);
         this.limite = limite;
     }
 
 
     //Altera o limite da conta
-    public boolean alterarLimite(int senha, double nLimite)
+    public boolean alterarLimite(long senha, double nLimite)
     {
         //A operação só sera efetuada se a conta estiver ativa.
         if(validaSenha(senha) && getSituacao() && nLimite >= 0) {
@@ -33,7 +33,7 @@ public class ContaEspecial extends ContaCorrente {
 
 
     //Apresenta o limite da conta
-    public boolean verificarLimite(int senha)
+    public boolean verificarLimite(long senha)
     { //A operação só sera efetuada se a conta estiver ativa.
         if(validaSenha(senha) && getSituacao()) {
             getLimite();
@@ -43,7 +43,7 @@ public class ContaEspecial extends ContaCorrente {
     }
 
 
-    public boolean saque(int senha, double valor)
+    public boolean saque(long senha, double valor)
     {
         //A operação só sera efetuada se a conta estiver ativa.
     	//"A operação de saque considera o saldo da conta acrescido do limite para decidir se o saque é efetuado ou não"

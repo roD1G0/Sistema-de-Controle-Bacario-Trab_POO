@@ -8,7 +8,7 @@ public class ContaCorrente extends Conta {
 	private static final long serialVersionUID = -8165658920708028765L;
 
 
-	public ContaCorrente(Cliente cliente, int senha) {
+	public ContaCorrente(Cliente cliente, long senha) {
         super(cliente, senha);
     }
 
@@ -22,7 +22,7 @@ public class ContaCorrente extends Conta {
 
 
     //Deposita o valor na conta
-    public boolean deposito(int senha, double valor) {
+    public boolean deposito(long senha, double valor) {
         //A operação só sera efetuada se a conta estiver ativa.
         //A operação de depósito é efetuada se o valor a ser depositado é maior do que zero.
         if(validaSenha(senha) && getSituacao() && valor > 0) {
@@ -33,7 +33,7 @@ public class ContaCorrente extends Conta {
     }
 
     //Apresenta o saldo da conta
-    public boolean verificarSaldo(int senha)
+    public boolean verificarSaldo(long senha)
     {
         //A operação só sera efetuada se a conta estiver ativa.
         if(validaSenha(senha) && getSituacao())
@@ -46,7 +46,7 @@ public class ContaCorrente extends Conta {
 
 
     //Saca o valor da conta
-    public boolean saque(int senha, double valor) {
+    public boolean saque(long senha, double valor) {
         //A operação só sera efetuada se a conta estiver ativa.
     	//A operação de saque é efetuada somente se o saldo da conta é igual ou superior ao valor que deve ser sacado.
         if(validaSenha(senha) && getSituacao() && valor <= getSaldo()) {
