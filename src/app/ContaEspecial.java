@@ -54,4 +54,7 @@ public class ContaEspecial extends ContaCorrente {
         return false;
     }
     private double getLimite() { return limite; }
+    public String toString() {
+    	return "Limite:"+this.limite+super.toString();
+    }
 }

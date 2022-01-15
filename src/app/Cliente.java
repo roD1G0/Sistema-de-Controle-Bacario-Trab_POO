@@ -68,9 +68,9 @@ public class Cliente implements Serializable{
 		}
 	}
 	public void setEndereco(long CEP,String pais,String cidade,String rua,int numero) {
-		endereco = new Endereco( CEP, pais, cidade, rua, numero);
+		this.endereco = new Endereco( CEP, pais, cidade, rua, numero);
 	}
 	public String getEndereco() {
-		return endereco.toString();
+		return this.endereco.toString();
 	}
 }

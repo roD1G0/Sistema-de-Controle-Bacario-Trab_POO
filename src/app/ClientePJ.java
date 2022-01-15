@@ -23,7 +23,10 @@ public class ClientePJ extends Cliente implements Valida{
 		return "CNPJ: " + CNPJ + " " + super.toString();
 	}
 	public boolean valida(long CNPJ) {
-		return true;
+		if(CNPJ == this.CNPJ) {
+			return true;
+		}
+		return false;
 	}
 
 }

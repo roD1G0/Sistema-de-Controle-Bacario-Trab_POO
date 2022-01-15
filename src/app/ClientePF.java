@@ -5,13 +5,12 @@ public class ClientePF extends Cliente implements Valida{
 	 */
 	private static final long serialVersionUID = 8264587340142452027L;
 	private long CPF;
-	private long RG; 
 	
-	public ClientePF(String nome, long CPF, long RG) {
+	public ClientePF(String nome, long CPF) {
 		//chama o construtor da super classe
 		super(nome);
 		this.CPF = CPF;
-		this.RG = RG;
+		
 	}
 	public void setCPF(long newCPF) {
 		CPF = newCPF;
@@ -19,18 +18,15 @@ public class ClientePF extends Cliente implements Valida{
 	public long getCPF() {
 		return CPF;
 	}
-	public void setRG(long newRG) {
-        RG = newRG;
-    }
-    public long getRG() {
-        return RG;
-    }
-	//exibe as informacoes do cliente pessoa fisica, incluindo o cpf
+		//exibe as informacoes do cliente pessoa fisica, incluindo o cpf
 	public String toString() {
-		return "CPF: "+ CPF + " RG: "+ RG +" "+ super.toString();
+		return "CPF: "+ CPF +" "+ super.toString();
 	}
 	public boolean valida(long CPF) {
-		return true;
+		if(CPF == this.CPF) {
+			return true;
+		}	
+		return false;
 	}
 
 }

@@ -22,7 +22,6 @@ public abstract class Conta implements Serializable, Valida{
 		dataAbert = new Date();
 		saldo = 0;
 		situacao = true;
-		cliente.incrementaContas();
 	}
 	//verifica se a senha informada é igual a senha da conta
 	public boolean validaSenha(long senha){
@@ -41,6 +40,9 @@ public abstract class Conta implements Serializable, Valida{
 	public boolean getSituacao() {
 		return situacao;
 	}
+	public Cliente getCliente() {
+		return this.cliente;
+	}
 	//deposita o valor na conta
 	public abstract boolean deposito(long senha, double valor);
 	//saca o valor da conta
@@ -49,16 +51,14 @@ public abstract class Conta implements Serializable, Valida{
 	public boolean ativaConta() {
 		if(!situacao) {
 			situacao = true;
-			cliente.incrementaContas();
 			return true;
 		}
 		return false;
 	}
 	//encerra a conta se ela estiver ativa, muda sua situacao para "Inativa" e decrementa na quantidade de contas do cliente
-	public boolean encerraConta() {
+	public boolean encerraConta(long senha) {
 		if(validaSenha(senha)==true && situacao) {
 			situacao = false;
-			cliente.decrementaContas();
 			dataEncer = new Date();
 			return true;
 		}
