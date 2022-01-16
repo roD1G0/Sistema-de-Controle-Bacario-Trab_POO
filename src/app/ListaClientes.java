@@ -34,7 +34,7 @@ public class ListaClientes implements Serializable{
 	}
 	public boolean incrementaContas(Cliente cliente) {
 		for(int i = 0; i < clientes.size();i++) {
-			if(verificaCliente(cliente)) {
+			if(clientes.get(i) == cliente) {
 				clientes.get(i).incrementaContas();
 				return true;
 			}
@@ -43,7 +43,7 @@ public class ListaClientes implements Serializable{
 	}
 	public boolean decrementaContas(Cliente cliente) {
 		for(int i = 0; i < clientes.size();i++) {
-			if(verificaCliente(cliente)) {
+			if(clientes.get(i) == cliente) {
 				clientes.get(i).decrementaContas();
 				return true;
 			}
@@ -52,7 +52,7 @@ public class ListaClientes implements Serializable{
 	}
 	public boolean setEndereco(Cliente cliente, long cep, String pais, String cidade, String rua, int num) {
 		for(int i = 0; i < clientes.size();i++) {
-			if(verificaCliente(cliente)) {
+			if(clientes.get(i) == cliente) {
 				clientes.get(i).setEndereco(cep, pais, cidade, rua, num);
 				return true;
 			}
@@ -69,7 +69,7 @@ public class ListaClientes implements Serializable{
 	}
 	public boolean altRenda(Cliente cliente, double renda) {
 		for(int i = 0; i < clientes.size();i++) {
-			if(verificaCliente(cliente)) {
+			if(clientes.get(i) == cliente) {
 				clientes.get(i).setRenda(renda);
 				return true;
 			}
@@ -78,7 +78,7 @@ public class ListaClientes implements Serializable{
 	}
 	public boolean altTelefone(Cliente cliente, long telefone) {
 		for(int i = 0; i < clientes.size();i++) {
-			if(verificaCliente(cliente)) {
+			if(clientes.get(i) == cliente) {
 				clientes.get(i).setTelefone(telefone);
 				return true;
 			}

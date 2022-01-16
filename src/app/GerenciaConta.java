@@ -56,54 +56,59 @@ public class GerenciaConta {
     			e.nextLine();
     			
     			if(opc == '1' || opc == '2' || opc == '3' || opc == '0') {
-    				do {
-        				System.out.println("Escolha um cliente para a conta:\n");
-        				lC.listarClientes();
-        				
-        				System.out.print("Sua escolha: ");
-        				o = e.nextInt();
-        				
-        				if(o < 0 || o > lC.quantClientes()-1)
-        					System.out.println("Opção Invalida!!!");
-        				else {
-        					do {
-        						System.out.println("Informe a senha da conta:\n(A senha não pode ter menos de 4 digitos e nem mais de 8 digitos)");
-        						System.out.print("Senha: ");
-        						senha = e.nextLong();
-        						e.nextLine();
-        						if(senha > 999 && senha < 99999999) {
-        							switch(opc) {
-        							case '1':
-        								ContaCorrente cC = new ContaCorrente(lC.getCliente(o), senha);
-        								l.addConta(cC);
-        								lC.incrementaContas(lC.getCliente(o));
-        								gravarListas();
-        							case '2':
-        								ContaPoupanca cP = new ContaPoupanca(lC.getCliente(o), senha);
-        								l.addConta(cP);
-        								lC.incrementaContas(lC.getCliente(o));
-        								gravarListas();
-        								break;
-        							case '3':
-        								System.out.println("Informe o limite da conta: ");
-        								double limite = e.nextDouble();
-        								ContaEspecial cE = new ContaEspecial(lC.getCliente(o), senha,limite);
-        								l.addConta(cE);
-        								lC.incrementaContas(lC.getCliente(o));
-        								gravarListas();
-        								break;
-        							case '0':
-        								System.out.println("Voltando...");
-        								break;
-        							default:
-        								System.out.println("Opção invalida!!!");
-        								break;
-        						}
-        						}
-        					}while(senha < 999 || senha > 99999999);
-        				}
-        				
-        			}while(o < 0 || o > lC.quantClientes()-1);
+    				if(opc == '1' || opc == '2' || opc == '3') {
+    					do {
+            				System.out.println("Escolha um cliente para a conta:\n");
+            				lC.listarClientes();
+            				
+            				System.out.print("Sua escolha: ");
+            				o = e.nextInt();
+            				
+            				if(o < 0 || o > lC.quantClientes()-1)
+            					System.out.println("Opção Invalida!!!");
+            				else {
+            					do {
+            						System.out.println("Informe a senha da conta:\n(A senha não pode ter menos de 4 digitos e nem mais de 8 digitos)");
+            						System.out.print("Senha: ");
+            						senha = e.nextLong();
+            						e.nextLine();
+            						if(senha > 999 && senha < 99999999) {
+            							switch(opc) {
+            							case '1':
+            								ContaCorrente cC = new ContaCorrente(lC.getCliente(o), senha);
+            								l.addConta(cC);
+            								lC.incrementaContas(lC.getCliente(o));
+            								gravarListas();
+            							case '2':
+            								ContaPoupanca cP = new ContaPoupanca(lC.getCliente(o), senha);
+            								l.addConta(cP);
+            								lC.incrementaContas(lC.getCliente(o));
+            								gravarListas();
+            								break;
+            							case '3':
+            								System.out.println("Informe o limite da conta: ");
+            								double limite = e.nextDouble();
+            								ContaEspecial cE = new ContaEspecial(lC.getCliente(o), senha,limite);
+            								l.addConta(cE);
+            								lC.incrementaContas(lC.getCliente(o));
+            								gravarListas();
+            								break;
+            							case '0':
+            								System.out.println("Voltando...");
+            								break;
+            							default:
+            								System.out.println("Opção invalida!!!");
+            								break;
+            						}
+            						}
+            					}while(senha < 999 || senha > 99999999);
+            				}
+            				
+            			}while(o < 0 || o > lC.quantClientes()-1);
+    				}
+    				
+    			}else {
+    				System.out.println("Opção invalida!!!");
     			}
     		} while (opc != '0');
         }
@@ -193,7 +198,7 @@ public class GerenciaConta {
                          case '1':
                              System.out.println("Ok");
                              break;
-                         case '2':
+                         case '0':
                              System.out.println("Saindo");
                              break;
                          default:
@@ -242,20 +247,20 @@ public class GerenciaConta {
                 	}while(!l.verificaNumero(numConta));
                     
                     do{
-                        System.out.println("Deseja realizar outro deposito?\n1-Sim.\n2-Não.");
+                        System.out.println("Deseja realizar outro deposito?\n1-Sim.\n0-Não.");
                         opc = e.next().charAt(0);
                         switch(opc){
                             case '1':
                                 System.out.println("Ok");
                                 break;
-                            case '2':
+                            case '0':
                                 System.out.println("Saindo");
                                 break;
                             default:
                                 System.out.println("Opção inválida!!!");
                         }
-                    }while(opc != 2);
-                }while(opc != 2);
+                    }while(opc != '0');
+                }while(opc != '0');
             }
             public static void Reativar(){
             	char opc;
