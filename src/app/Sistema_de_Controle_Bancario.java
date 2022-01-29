@@ -8,8 +8,8 @@ public class Sistema_de_Controle_Bancario {
 		char op;
 		
 		do {
-			System.out.println("\tMENU DE OPÇÔES:\nEscolha uma das opções:\n1-Menu das contas;\n2-Menu dos clientes;\n0-Sair.");
-			System.out.print("Sua opção: ");
+			System.out.print("\n\tMENU DE OPÇÔES:\nEscolha uma das opções:"
+					+ "\n1-Menu das contas;\n2-Menu dos clientes;\n0-Sair.\nSua opção: ");
 			op = e.next().charAt(0);
 			e.nextLine();
 			

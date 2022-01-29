@@ -12,7 +12,7 @@ public class ListaClientes implements Serializable{
 	public ListaClientes() {
 		clientes = new ArrayList<Cliente>();
 	}
-	public void addCliente(Cliente cliente) {
+	public void addCliente (Cliente cliente) {
 		clientes.add(cliente);
 	}
 	public int quantClientes() {

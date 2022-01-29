@@ -12,7 +12,7 @@ public class GerenciaConta {
 
         {
             lerListas();
-            System.out.println("Escolha uma opção: ");
+            System.out.println("\nEscolha uma opção: ");
             System.out.println("1- Abrir Conta. ");
             System.out.println("2- Gerenciar Conta. ");
             System.out.println("3- Lista de Contas. ");

@@ -67,7 +67,7 @@ public class ListaContas implements Serializable{
 		return false;
 		
 	}
-	public boolean reativarConta(long numero) {
+	public boolean reativarConta (long numero) {
 		for(int i = 0; i < contas.size(); i++) {
 			if(numero == contas.get(i).getNumeroConta()){
 				if(contas.get(i).ativaConta())

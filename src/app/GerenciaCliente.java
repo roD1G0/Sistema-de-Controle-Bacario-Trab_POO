@@ -10,7 +10,8 @@ public class GerenciaCliente {
     	char op1;
     	do {
 			lerListas();
-			System.out.println("Escolha uma opção: \n 1-Cadastrar cliente; \n 2-Alterar informações do cliente; \n 3-Lista de clientes\n0-Voltar.");
+			System.out.println("\nEscolha uma opção: \n 1-Cadastrar cliente; "
+					+ "\n 2-Alterar informações do cliente; \n 3-Lista de clientes\n0-Voltar.");
 			System.out.print("Sua opção: ");
 			op1 = e.next().charAt(0);
 			e.nextLine();
