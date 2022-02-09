@@ -88,12 +88,15 @@ public class ListaContas implements Serializable{
 	public boolean alterarLimite(long numero, long senha, double valor) {
 		for(int i = 0; i < contas.size(); i++) {
 			if(numero == contas.get(i).getNumeroConta()){
-				ContaEspecial cE = (ContaEspecial)contas.get(i);
-				contas.remove(i);
-				if(cE.alterarLimite(senha, valor)) {
-					contas.add(cE);
-					return true;
+				if(contas.get(i).getTipoConta() == "Conta Especial") {
+					ContaEspecial cE = (ContaEspecial) contas.get(i);
+					contas.remove(i);
+					if(cE.alterarLimite(senha, valor)) {
+						contas.add(cE);
+						return true;
+					}
 				}
+				
 			}
 		}
 		return false;
@@ -106,5 +109,32 @@ public class ListaContas implements Serializable{
 			}
 		}
 		return null;
+	}
+        public String getSaldoMaior(){
+            int maior = 0;
+            for(int i = 0; i < contas.size(); i++){
+              if(contas.get(i).getSaldo() > contas.get(maior).getSaldo()){
+                    maior = i;
+            }
+        }
+        return contas.get(maior).toString();
+    }
+        public String getSaldoMenor(){
+            int menor = 0;
+            for(int i = 0; i < contas.size(); i++){
+                if(contas.get(i).getSaldo() < contas.get(menor).getSaldo()){
+                    menor = i;
+                }
+        }
+        return contas.get(menor).toString();
+    }
+        public long getMaiorNumero(){
+		long maximo = 0;
+		for(int i = 0; i <contas.size(); i++){
+			if(contas.get(i).getNumeroConta() > maximo){
+				maximo = contas.get(i).getNumeroConta();
+			}
+		}
+		return maximo;
 	}
 }

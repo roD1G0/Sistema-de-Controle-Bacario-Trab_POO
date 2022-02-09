@@ -5,11 +5,10 @@ public class Sistema_de_Controle_Bancario {
 
 	public static void main(String[] args) {
 		Scanner e = new Scanner(System.in);
-		char op;
-		
+                char op;	
 		do {
-			System.out.print("\n\tMENU DE OPÇÔES:\nEscolha uma das opções:"
-					+ "\n1-Menu das contas;\n2-Menu dos clientes;\n0-Sair.\nSua opção: ");
+			System.out.print("\n\tMENU DE OPï¿½ï¿½ES:\nEscolha uma das opï¿½ï¿½es:"
+					+ "\n1-Menu das contas;\n2-Menu dos clientes;\n0-Sair.\nSua opï¿½ï¿½o: ");
 			op = e.next().charAt(0);
 			e.nextLine();
 			
@@ -24,7 +23,7 @@ public class Sistema_de_Controle_Bancario {
 					System.out.println("Saindo...");
 					break;
 				default:
-					System.out.println("Opção invalida!!!");
+					System.out.println("Opï¿½ï¿½o invalida!!!");
 					break;
 			}
 		}while(op != '0');

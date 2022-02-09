@@ -7,9 +7,10 @@ public class ContaCorrente extends Conta {
 	 */
 	private static final long serialVersionUID = -8165658920708028765L;
 
-
+	private String tipoConta;
 	public ContaCorrente(Cliente cliente, long senha) {
-        super(cliente, senha);
+                   super(cliente, senha);
+                   tipoConta = "Conta Corrente";
     }
 
     /*A conta corrente permite as seguintes operações:
@@ -55,6 +56,10 @@ public class ContaCorrente extends Conta {
             }
         return false;
     }
-
-
+    public String getTipoConta() {
+		return this.tipoConta;
+	}
+    public String toString(){
+    return getTipoConta() + super.toString();
+    }
 }

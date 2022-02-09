@@ -8,7 +8,6 @@ public class ContaEspecial extends ContaCorrente {
 	private static final long serialVersionUID = -4636050053938698024L;
 	private double limite;
 
-
     /*A conta especial é uma conta corrente que possui um limite, ou seja,
     a operação de saque considera o saldo da conta acrescido do limite
     para decidir se o saque é efetuado ou não. Além das operações da conta corrente,
@@ -17,6 +16,7 @@ public class ContaEspecial extends ContaCorrente {
     public ContaEspecial(Cliente cliente, long senha, double limite) {
         super(cliente, senha);
         this.limite = limite;
+        tipoConta = "Conta Especial";
     }
 
 
@@ -55,6 +55,7 @@ public class ContaEspecial extends ContaCorrente {
     }
     private double getLimite() { return limite; }
     public String toString() {
-    	return "Limite:"+this.limite+super.toString();
+    	return getTipoConta()+"Limite:"+this.limite+super.toString();
     }
+    
 }

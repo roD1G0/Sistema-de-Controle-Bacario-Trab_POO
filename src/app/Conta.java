@@ -15,6 +15,7 @@ public abstract class Conta implements Serializable, Valida{
 	private double saldo;
 	private boolean situacao;
 	private Cliente cliente;
+        
 	public Conta(Cliente cliente, long senha) {
 		numero = geraNumeros++;
 		this.cliente = cliente;
@@ -23,7 +24,7 @@ public abstract class Conta implements Serializable, Valida{
 		saldo = 0;
 		situacao = true;
 	}
-	//verifica se a senha informada é igual a senha da conta
+	//verifica se a senha informada ï¿½ igual a senha da conta
 	public boolean validaSenha(long senha){
         if (this.senha==senha){return true;}
         else {return false;}
@@ -36,7 +37,7 @@ public abstract class Conta implements Serializable, Valida{
 	public double getSaldo() {
 		return saldo;
 	}
-	//retorna a situção da conta em formato booleano, true = ativa, false = inativa
+	//retorna a situï¿½ï¿½o da conta em formato booleano, true = ativa, false = inativa
 	public boolean getSituacao() {
 		return situacao;
 	}
@@ -82,7 +83,7 @@ public abstract class Conta implements Serializable, Valida{
 	}
 	//retorna as informacoes do cliente
 	public String toString() {
-		return "Nome cliente: "+ cliente.getNome() + " Numero: " + numero + " Saldo: "+ saldo + " Situação: " + verificaSituacao() + "\nData abertura: " + dataAbert + " Data encerramento: " + dataEncer;
+		return " Nome cliente: "+ cliente.getNome() + " Numero: " + numero + " Saldo: "+ saldo + " Situaï¿½ï¿½o: " + verificaSituacao() + "\nData abertura: " + dataAbert + " Data encerramento: " + dataEncer;
 	}
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
@@ -94,6 +95,9 @@ public abstract class Conta implements Serializable, Valida{
 		}
 		return false;
 	}
+	public static void setGeraNumeros(long numero){
+                geraNumeros = numero;
+	}
 
-
+        public abstract String getTipoConta();
 }
