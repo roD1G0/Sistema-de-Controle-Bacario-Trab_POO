@@ -8,9 +8,7 @@ public class GerenciaConta {
 
     public static void ExibirMenu(){
     	char op;
-    	do
-
-        {
+    	do{
             lerListas();
             System.out.println("\nEscolha uma op��o: ");
             System.out.println("1- Abrir Conta. ");
@@ -23,13 +21,13 @@ public class GerenciaConta {
             e.nextLine();
             switch (op) {
                 case '1':
-                    AbrirConta();
+                    CadastrarConta.AbrirConta();
                     break;
                 case '2':
                     gerenciarContas();
                     break;
                 case '3':
-                	listaDeContas();
+                    listaDeContas();
                     break;
                 case '0':
                     System.out.println("Saindo");
@@ -37,86 +35,12 @@ public class GerenciaConta {
                 default:
                     System.out.println("Opc�o inv�lida.");
                     break;
-
             }
         }while( op != '0' );
-
     }
-
-
-        public static void AbrirConta() {
-            char opc;
-            do {
-            	lerListas();
-    			int o;
-    			long senha = 0;
-    			System.out.println("Escolha o tipo de conta: \n 1-Conta Corrente \n 2-Conta Poupan�a \n 3-Conta Especial \n 0-Voltar;");
-    			System.out.print("Sua op��o:");
-    			opc = e.next().charAt(0);
-    			e.nextLine();
-    			
-    			if(opc == '1' || opc == '2' || opc == '3' || opc == '0') {
-    				if(opc == '1' || opc == '2' || opc == '3') {
-    					do {
-            				System.out.println("Escolha um cliente para a conta:\n");
-            				lC.listarClientes();
-            				
-            				System.out.print("Sua escolha: ");
-            				o = e.nextInt();
-            				
-            				if(o < 0 || o > lC.quantClientes()-1)
-            					System.out.println("Op��o Invalida!!!");
-            				else {
-            					do {
-            						System.out.println("Informe a senha da conta:\n(A senha n�o pode ter menos de 4 digitos e nem mais de 8 digitos)");
-            						System.out.print("Senha: ");
-            						senha = e.nextLong();
-            						e.nextLine();
-            						if(senha > 999 && senha < 99999999) {
-            							switch(opc) {
-            							case '1':
-            								ContaCorrente cC = new ContaCorrente(lC.getCliente(o), senha);
-            								l.addConta(cC);
-            								lC.incrementaContas(lC.getCliente(o));
-            								gravarListas();
-            							case '2':
-            								ContaPoupanca cP = new ContaPoupanca(lC.getCliente(o), senha);
-            								l.addConta(cP);
-            								lC.incrementaContas(lC.getCliente(o));
-            								gravarListas();
-            								break;
-            							case '3':
-            								System.out.println("Informe o limite da conta: ");
-            								double limite = e.nextDouble();
-            								ContaEspecial cE = new ContaEspecial(lC.getCliente(o), senha,limite);
-            								l.addConta(cE);
-            								lC.incrementaContas(lC.getCliente(o));
-            								gravarListas();
-            								break;
-            							case '0':
-            								System.out.println("Voltando...");
-            								break;
-            							default:
-            								System.out.println("Op��o invalida!!!");
-            								break;
-            						}
-            						}
-            					}while(senha < 999 || senha > 99999999);
-            				}
-            				
-            			}while(o < 0 || o > lC.quantClientes()-1);
-    				}
-    				
-    			}else {
-    				System.out.println("Op��o invalida!!!");
-    			}
-    		} while (opc != '0');
-        }
         public static void gerenciarContas() {
-        	char op1;
-        	do
-
-            {
+            char op1;
+            do{
                 lerListas();
                 System.out.println("Escolha uma op��o:");
                 System.out.println("1- Fazer saque.");
@@ -126,6 +50,7 @@ public class GerenciaConta {
                 System.out.println("5- Alterar limte. (Conta especial)");
                 System.out.println("6- Conta com maior saldo.");
                 System.out.println("7- Conta com menor saldo.");
+                System.out.println("8- Apagar conta");
                 System.out.println("0 - Voltar.");
                 System.out.print("Sua op��o: ");
                 
@@ -153,13 +78,15 @@ public class GerenciaConta {
                     case '7':
                         contaMenorSaldo();
                         break;
+                    case '8':
+                        CadastrarConta.removeConta();
+                        break;
                     case '0':
                         System.out.println("Saindo");
                         break;
                     default:
                         System.out.println("Opc�o inv�lida.");
                         break;
-
                 }
             }while( op1 != '0' );
         }
@@ -188,13 +115,10 @@ public class GerenciaConta {
 	                             }else {
 	                            	 System.out.println("Saque n�o realizado!\nO valor � maior que o saldo da conta!");
 	                             }
-	                             
 	                        }else {
 	                        	System.out.println("Senha incorreta!!!");
 	                        }
-	                        
-	                	}while(!l.verificaSenha(numConta, senha));
-	                    
+                            }while(!l.verificaSenha(numConta, senha));
 	                }else{
 	                    System.out.println("Conta inexistente.");
 	                }
@@ -214,9 +138,7 @@ public class GerenciaConta {
                      }
                   }while(opc != '0');
             }while(opc != '0');
-
-
-            }
+        }
             public static void Deposita(){
             	char opc;
             	long numConta = 0;
@@ -229,7 +151,7 @@ public class GerenciaConta {
                         e.nextLine();
                         if(l.verificaNumero(numConta)){
                         	do {
-                        		System.out.println("Informe a senha: ");
+                        	System.out.println("Informe a senha: ");
                                 senha = e.nextLong();
                                 e.nextLine();
                                 
@@ -248,12 +170,10 @@ public class GerenciaConta {
                                 	System.out.println("Senha incorreta!!!");
                                 }
                         	}while(!l.verificaSenha(numConta, senha));
-                          
                         }else{
                             System.out.println("Conta inexistente.");
                         }
                 	}while(!l.verificaNumero(numConta));
-                    
                     do{
                         System.out.println("Deseja realizar outro deposito?\n1-Sim.\n0-N�o.");
                         opc = e.next().charAt(0);
@@ -306,10 +226,7 @@ public class GerenciaConta {
                             System.out.println("Op��o inv�lida!!!");
                     }
             		}while(opc != '0');
-            		
             	}while(opc != '0');
-            	
-
             }
             public static void EncerrarConta() {
             	char opc;
@@ -361,7 +278,6 @@ public class GerenciaConta {
             		}while(opc != '0');
             		
             	}while(opc != '0');
-            	
             }
             public static void lerListas() {
         		try{
@@ -423,7 +339,6 @@ public class GerenciaConta {
                                 	}else {
                                 		System.out.println("N�o foi possivel alterar o limte!");
                                 	}
-                                    
                                 }else {
                                 	System.out.println("Senha incorreta!!!");
                                 }
@@ -447,15 +362,24 @@ public class GerenciaConta {
                             System.out.println("Op��o inv�lida!!!");
                     }
             		}while(opc != '0');
-            		
             	}while(opc != '0');
             }
             public static void contaMaiorSaldo(){
                 System.out.println("\nEsta é a conta com maior saldo:");
-                System.out.println(l.getSaldoMaior());
+                try{
+                    System.out.println(l.getSaldoMaior());
+                }catch(Exception err){
+                    System.out.println("\nOuve um erro na pesquisa: ");
+                    System.err.println(err.getMessage());
+            }
     }
             public static void contaMenorSaldo(){
                 System.out.println("\nEsta é a conta com menor saldo:");
-                System.out.println(l.getSaldoMenor());
+                try{
+                    System.out.println(l.getSaldoMenor());
+                }catch(Exception er){
+                    System.out.println("\nOuve um erro na pesquisa: ");
+                    System.err.println(er.getMessage());
+                }
     }
 }

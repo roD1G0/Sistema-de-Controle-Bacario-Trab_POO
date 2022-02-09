@@ -88,7 +88,7 @@ public class ListaContas implements Serializable{
 	public boolean alterarLimite(long numero, long senha, double valor) {
 		for(int i = 0; i < contas.size(); i++) {
 			if(numero == contas.get(i).getNumeroConta()){
-				if(contas.get(i).getTipoConta() == "Conta Especial") {
+				if("Conta Especial".equals(contas.get(i).getTipoConta())) {
 					ContaEspecial cE = (ContaEspecial) contas.get(i);
 					contas.remove(i);
 					if(cE.alterarLimite(senha, valor)) {

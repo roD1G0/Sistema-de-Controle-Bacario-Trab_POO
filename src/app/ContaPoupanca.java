@@ -25,9 +25,10 @@ public class ContaPoupanca extends ContaCorrente {
 
 	}
 
+        @Override
 	public double getSaldo() {
 		double total = 0;
-		for(int i = 0; i <saldo.length; i++){
+		for(int i = 0; i < saldo.length; i++){
 			total += saldo[1];
 		}
 		return total;
@@ -65,11 +66,4 @@ public class ContaPoupanca extends ContaCorrente {
 		return false;
 	}
 
-
-
-
-	public String toString() {
-		return super.toString() + getTipoConta();
-
-	}
 }

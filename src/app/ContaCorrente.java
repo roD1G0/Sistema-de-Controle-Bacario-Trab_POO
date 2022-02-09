@@ -7,7 +7,7 @@ public class ContaCorrente extends Conta {
 	 */
 	private static final long serialVersionUID = -8165658920708028765L;
 
-	private String tipoConta;
+	protected String tipoConta;
 	public ContaCorrente(Cliente cliente, long senha) {
                    super(cliente, senha);
                    tipoConta = "Conta Corrente";
