@@ -23,15 +23,21 @@ public class ContaCorrente extends Conta {
 
 
     //Deposita o valor na conta
-    public boolean deposito(long senha, double valor) {
-        //A operação só sera efetuada se a conta estiver ativa.
-        //A operação de depósito é efetuada se o valor a ser depositado é maior do que zero.
-        if(validaSenha(senha) && getSituacao() && valor > 0) {
-                setSaldo(getSaldo() + valor);
-                return true;
-            }
-        return false;
-    }
+        @Override
+        public void deposito(long senha, double valor, int dia) throws Exception{
+            //A operação só sera efetuada se a conta estiver ativa.
+            //A operação de depósito é efetuada se o valor a ser depositado é maior do que zero.
+            if(!validaSenha(senha)) {
+                    throw new Exception("Senha invalida");
+                }
+            if(!getSituacao()) {
+                    throw new Exception("Conta inativa");
+                }
+            if(valor <= 0) {
+                    throw new Exception("Valor menor ou igual a zero");
+                }
+            setSaldo(getSaldo()+valor);
+        }
 
     //Apresenta o saldo da conta
     public boolean verificarSaldo(long senha)
@@ -47,14 +53,20 @@ public class ContaCorrente extends Conta {
 
 
     //Saca o valor da conta
-    public boolean saque(long senha, double valor) {
+        @Override
+    public void saque(long senha, double valor, int dia) throws Exception{
         //A operação só sera efetuada se a conta estiver ativa.
     	//A operação de saque é efetuada somente se o saldo da conta é igual ou superior ao valor que deve ser sacado.
-        if(validaSenha(senha) && getSituacao() && valor <= getSaldo()) {
-                    	setSaldo(getSaldo() - valor);
-            return true;
-            }
-        return false;
+        if(!validaSenha(senha)){
+            throw new Exception ("Senha invalida!");
+        }
+        if(!getSituacao()) {
+            throw new Exception ("Conta inativa!");
+        }
+        if(valor > getSaldo()) {
+            throw new Exception ("Valor maior que o saldo disponivel!");
+        }
+        setSaldo(getSaldo() - valor);
     }
     public String getTipoConta() {
 		return this.tipoConta;

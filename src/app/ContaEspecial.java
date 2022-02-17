@@ -21,14 +21,19 @@ public class ContaEspecial extends ContaCorrente {
 
 
     //Altera o limite da conta
-    public boolean alterarLimite(long senha, double nLimite)
+    public void alterarLimite(long senha, double nLimite) throws Exception
     {
         //A operação só sera efetuada se a conta estiver ativa.
-        if(validaSenha(senha) && getSituacao() && nLimite >= 0) {
-                 limite =nLimite;
-                return true;
-            }
-        return false;
+        if(!validaSenha(senha)) {
+             throw new Exception ("Senha invalida!");
+        }
+        if(!getSituacao()) {
+             throw new Exception ("Conta inativa!");
+        }
+        if(nLimite <= 0) {
+             throw new Exception ("Limite menor ou igual a zero!");
+        }
+        limite =nLimite;
     }
 
 
@@ -43,19 +48,25 @@ public class ContaEspecial extends ContaCorrente {
     }
 
 
-    public boolean saque(long senha, double valor)
+        @Override
+    public void saque(long senha, double valor, int dia) throws Exception
     {
         //A operação só sera efetuada se a conta estiver ativa.
-    	//"A operação de saque considera o saldo da conta acrescido do limite para decidir se o saque é efetuado ou não"
-        if(validaSenha(senha) && getSituacao() && valor <= getSaldo() + getLimite()) {
-                super.saque(senha, valor);
-                return true;
-            }
-        return false;
+    	//"A operação de saque considera o saldo da conta acrescido do limite para decidir se o saque é efetuado ou não
+        if(!validaSenha(senha)){
+            throw new Exception ("Senha invalida!");
+        }
+        if(!getSituacao()) {
+            throw new Exception ("Conta inativa!");
+        }
+        if(valor > getSaldo()+getLimite()) {
+            throw new Exception ("Valor maior que o saldo disponivel!");
+        }
+        setSaldo(getSaldo() - valor);
     }
     private double getLimite() { return limite; }
     public String toString() {
-    	return getTipoConta()+"Limite:"+this.limite+super.toString();
+    	return "Limite:"+this.limite+" "+super.toString();
     }
     
 }

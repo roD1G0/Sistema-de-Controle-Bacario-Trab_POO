@@ -46,6 +46,7 @@ public class CadastrarConta {
             								l.addConta(cC);
             								lC.incrementaContas(lC.getCliente(o));
             								gravarListas();
+                                                                        break;
             							case '2':
             								ContaPoupanca cP = new ContaPoupanca(lC.getCliente(o), senha);
             								l.addConta(cP);
@@ -85,52 +86,50 @@ public class CadastrarConta {
             	long senha = 0;
             	do {
             		l.listarContas();
-            		do {
-            			System.out.print("\nInforme o numero da conta que deseja remover:\nNumero: ");
+            		
+            		System.out.print("\nInforme o numero da conta que deseja remover:\nNumero: ");
                 		numConta = e.nextLong();
                 		e.nextLine();
                 		
                 		if(l.verificaNumero(numConta)) {
-                			do {
-                        		System.out.println("Informe a senha: ");
-                                senha = e.nextLong();
-                                e.nextLine();
+                                    System.out.println("Informe a senha: ");
+                                    senha = e.nextLong();
+                                    e.nextLine();
                                 
-                                if(l.verificaSenha(numConta, senha)){
-                                   if(l.encerraConta(numConta, senha)) {
-                                	System.out.println("Conta encerrada com sucesso");
-                                       lC.decrementaContas(l.getCliente(numConta));
-                                       if(l.removeConta(numConta)){
-                                           gravarListas();
-                                       }else{
-                                        System.out.println("Não foi possivel remover a conta!");
-                                       }
-                                   }else {
-                                    System.out.println("N�o foi possivel encerrar a conta!");
-                                   }
-                                }else {
-                                    System.out.println("Senha incorreta!!!");
-                                }
-                                    }while(!l.verificaSenha(numConta, senha));
+                                    if(l.verificaSenha(numConta, senha)){
+                                        if(l.encerraConta(numConta, senha)) {
+                                            System.out.println("Conta removida com sucesso");
+                                            lC.decrementaContas(l.getCliente(numConta));
+                                            if(l.removeConta(numConta)){
+                                                gravarListas();
+                                            }else{
+                                            System.out.println("Não foi possivel remover a conta!");
+                                            }
+                                        }else {
+                                            System.out.println("N�o foi possivel remover a conta!");
+                                        }
+                                    }else {
+                                        System.out.println("Senha incorreta!!!");
+                                    }
                 		}else {
-                			 System.out.println("Conta inexistente.");
-                		}
-            		}while(!l.verificaNumero(numConta));
+                                    System.out.println("Conta inexistente.");
+                		}	
             		do {
             			System.out.print("Deseja encerrar mais uma conta?\n1-Sim\n0-N�o\nSua op��o:");
                 		opc = e.next().charAt(0);
                 		e.nextLine();
                 		switch(opc){
-                        case '1':
-                            System.out.println("Ok");
-                            break;
-                        case '2':
-                            System.out.println("Saindo");
-                            break;
-                        default:
-                            System.out.println("Op��o inv�lida!!!");
-                    }
-            		}while(opc != '0');
+                                    case '1':
+                                        System.out.println("Ok");
+                                        break;
+                                    case '0':
+                                        System.out.println("Saindo");
+                                        break;
+                                    default:
+                                        System.out.println("Op��o inv�lida!!!");
+                                        break;
+                                }
+            		}while(opc != '0' && opc != '1');
             		
             	}while(opc != '0');
             }

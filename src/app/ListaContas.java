@@ -1,6 +1,7 @@
 package app;
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.Date;
 public class ListaContas implements Serializable{
 	/**
 	 * 
@@ -39,19 +40,29 @@ public class ListaContas implements Serializable{
 		return false;
 	}
 	public boolean saqueConta(long numero, long senha, double valor) {
+                Date dia = new Date();
 		for(int i = 0; i < contas.size(); i++) {
 			if(numero == contas.get(i).getNumeroConta()){
-				if(contas.get(i).saque(senha, valor))
-				return true;
+                            try{
+                                contas.get(i).saque(senha, valor, dia.getDay());
+                            }catch(Exception er){
+                                System.err.println(er.getMessage());
+                            }
+                            return true;
 			}
 		}
 		return false;
 	}
 	public boolean depositaConta(long numero, long senha, double valor) {
+            Date dia = new Date();
 		for(int i = 0; i < contas.size(); i++) {
 			if(numero == contas.get(i).getNumeroConta()){
-				if(contas.get(i).deposito(senha, valor))
-				return true;
+                            try{
+                                contas.get(i).deposito(senha, valor, dia.getDay());
+                            }catch(Exception er){
+                                System.out.println(er.getMessage());
+                            }
+                            return true;
 			}
 		}
 		return false;
@@ -60,8 +71,12 @@ public class ListaContas implements Serializable{
 	public boolean encerraConta(long numero, long senha) {
 		for(int i = 0; i < contas.size(); i++) {
 			if(numero == contas.get(i).getNumeroConta()){
-				if(contas.get(i).encerraConta(senha))
-				return true;
+                            try{
+                                contas.get(i).encerraConta(senha);
+                            }catch(Exception er){
+                                System.err.println(er.getMessage());
+                            }
+                            return true;
 			}
 		}
 		return false;
@@ -91,14 +106,17 @@ public class ListaContas implements Serializable{
 				if("Conta Especial".equals(contas.get(i).getTipoConta())) {
 					ContaEspecial cE = (ContaEspecial) contas.get(i);
 					contas.remove(i);
-					if(cE.alterarLimite(senha, valor)) {
-						contas.add(cE);
-						return true;
-					}
-				}
-				
+					try{
+                                            cE.alterarLimite(senha, valor);
+                                        }catch(Exception er){
+                                            System.err.println(er.getMessage());
+                                        } 
+                                    contas.add(cE);
+                                    return true;
 			}
+				
 		}
+	}
 		return false;
 		
 	}
@@ -113,23 +131,23 @@ public class ListaContas implements Serializable{
         public String getSaldoMaior(){
             int maior = 0;
             for(int i = 0; i < contas.size(); i++){
-              if(contas.get(i).getSaldo() > contas.get(maior).getSaldo()){
+              if(contas.get(i).getSaldo() >= contas.get(maior).getSaldo()){
                     maior = i;
             }
         }
-        return contas.get(maior).toString();
+            return contas.get(maior).toString();
     }
         public String getSaldoMenor(){
             int menor = 0;
             for(int i = 0; i < contas.size(); i++){
-                if(contas.get(i).getSaldo() < contas.get(menor).getSaldo()){
+                if(contas.get(i).getSaldo() <= contas.get(menor).getSaldo()){
                     menor = i;
                 }
         }
         return contas.get(menor).toString();
     }
         public long getMaiorNumero(){
-		long maximo = 0;
+		long maximo = 10000;
 		for(int i = 0; i <contas.size(); i++){
 			if(contas.get(i).getNumeroConta() > maximo){
 				maximo = contas.get(i).getNumeroConta();

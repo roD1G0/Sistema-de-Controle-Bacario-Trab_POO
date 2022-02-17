@@ -7,63 +7,74 @@ public class ContaPoupanca extends ContaCorrente {
 	public ContaPoupanca(Cliente cliente, long senha) {
 		super(cliente, senha);
 		tipoConta = "Conta Poupança";
-		saldo = new double[28];
-		for(int i = 0; i<saldo.length; i++){
-			saldo[i] = 0;
+		this.saldo = new double[28];
+		for(int i = 0; i<this.saldo.length; i++){
+			this.saldo[i] = 0.0;
 		}
 
 	}
 
-	public boolean deposito(long senha, double valor, int dia) {
-		if (validaSenha(senha) && getSituacao() && valor > 0) {
-			if(dia > 28)
-				dia = 1;
-			saldo[dia -1] = valor;
-			return true;
+	public void deposito(long senha, double valor, int dia) throws Exception{
+		if (!validaSenha(senha)) {
+                    throw new Exception ("Senha invalida!");
 		}
-		return false;
-
+                if (!getSituacao()) {
+                    throw new Exception ("Conta inativa!");
+		}
+                if (valor <= 0) {
+                    throw new Exception ("Valor menor ou igual a zero!");
+		}
+		if(dia > 28)
+                    dia = 1;
+                this.saldo[dia -1] = valor;
 	}
-
         @Override
-	public double getSaldo() {
+        public double getSaldo() {
 		double total = 0;
-		for(int i = 0; i < saldo.length; i++){
-			total += saldo[1];
+		for(int i = 0; i < this.saldo.length; i++){
+			total += this.saldo[i];
 		}
 		return total;
 	}
-
-	public boolean saque(long senha, double valor, int dia) {
-		if(validaSenha(senha) && getSituacao() && valor <= getSaldo()) {
-			if(dia> 28)
-				dia= 1;
-			do{
-				if(saldo[dia-1]>= valor){
-					saldo[dia -1] -= valor;
-					valor = 0;
-
-				}else{
-					valor -= saldo[dia-1];
-					saldo[dia-1] = 0;
-					dia --;
-					if(dia == 0)
-						dia = 28;
-				}
-			}while(valor> 0);
-			return true;
+        @Override
+	public void saque(long senha, double valor, int dia)throws Exception {
+		if(!validaSenha(senha)) {
+                    throw new Exception ("Senha invalida!");
 		}
-		return false;
+                if(!getSituacao()) {
+                    throw new Exception ("Conta inativa!");
+		}
+                if(valor > this.getSaldo()) {
+                    throw new Exception ("Valor maior que o saldo disponivel!");
+		}
+		if(dia> 28)
+                    dia= 1;
+                do{
+                    if(this.saldo[dia-1]>= valor){
+                        this.saldo[dia -1] -= valor;
+                        valor = 0;
+                    }else{
+                        valor -= this.saldo[dia-1];
+                        this.saldo[dia-1] = 0;
+                        dia --;
+                        if(dia == 0)
+                            dia = 28;
+                    }
+                }while(valor > 0);
 	}
 
-	public boolean calcularJuros(long senha, double juros, int dia) {
-		if (validaSenha(senha) && getSituacao()) {
-			if (dia > 28)
-				dia = 1;
-			saldo[dia - 1] += (saldo[dia - 1] * juros);
-			return true;
-		}
-		return false;
+	public void calcularJuros(long senha, double juros, int dia) throws Exception{
+            if (!validaSenha(senha) && getSituacao()) {
+		throw new Exception("Senha invalida!");
+            }
+            if (!getSituacao()) {
+		throw new Exception("Conta inativa!");
+            }
+            if (dia > 28)
+		dia = 1;
+            this.saldo[dia - 1] += (this.saldo[dia - 1] * juros);
 	}
-
+        public void setSaldo(double nSaldo, int dia){
+            this.saldo[dia-1] = nSaldo;
+        }
 }
