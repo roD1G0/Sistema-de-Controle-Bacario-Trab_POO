@@ -292,8 +292,9 @@ public class GerenciaConta {
         		}
         	}
             public static void listaDeContas() {
-        		System.out.println("\tEsta � a lista de Contas:\n");
-        		l.listarContas();
+            	String lista = l.listarContas();;
+        		System.out.println("\tEsta � a lista de Contas:\n"+ lista);
+        		 
         	}
             public static void alterarLimite() {
             	char opc;

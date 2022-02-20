@@ -85,4 +85,10 @@ public class ListaClientes implements Serializable{
 		}
 		return false;
 	}
+        public String[] getLista(){
+            String[] lista = new String[clientes.size()];
+		for(int i = 0; i < clientes.size(); i++)
+		 lista[i] = (i+") "+clientes.get(i).toString());
+            return lista;
+        }
 }

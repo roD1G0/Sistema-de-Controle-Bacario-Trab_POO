@@ -18,9 +18,11 @@ public class ListaContas implements Serializable{
 	public int quantContas() {
 		return contas.size();
 	}
-	public void listarContas() { 
+	public String listarContas() { 
+		String lista = "";
 		for(int i = 0; i < contas.size(); i++)
-		  System.out.println(i+") "+contas.get(i).toString());
+		 lista += (i+") "+contas.get(i).toString())+"\n";
+		return lista;
 	}
 	public boolean removeConta(long numero) {
 		for(int i = 0; i < contas.size(); i++) {
@@ -120,14 +122,6 @@ public class ListaContas implements Serializable{
 		return false;
 		
 	}
-	public Cliente getCliente(long numero) {
-		for(int i = 0; i < contas.size(); i++) {
-			if(numero == contas.get(i).getNumeroConta()){
-				return contas.get(i).getCliente();
-			}
-		}
-		return null;
-	}
         public String getSaldoMaior(){
             int maior = 0;
             for(int i = 0; i < contas.size(); i++){
@@ -155,4 +149,10 @@ public class ListaContas implements Serializable{
 		}
 		return maximo;
 	}
+        public String[] getLista(){
+            String[] lista = new String[contas.size()];
+		for(int i = 0; i < contas.size(); i++)
+		 lista[i] = (i+") "+contas.get(i).toString());
+            return lista;
+        }
 }

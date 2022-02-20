@@ -65,6 +65,8 @@ public class ContaEspecial extends ContaCorrente {
         setSaldo(getSaldo() - valor);
     }
     private double getLimite() { return limite; }
+    
+    @Override
     public String toString() {
     	return "Limite:"+this.limite+" "+super.toString();
     }
