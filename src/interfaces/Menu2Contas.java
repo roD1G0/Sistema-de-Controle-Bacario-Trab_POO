@@ -142,7 +142,8 @@ public class Menu2Contas extends JFrame{
 		setVisible(false);
 	}
 	public void btnGerenciarActionPerformed(ActionEvent evt) {
-		
+		new Menu7GerenciarContas().setVisible(true);
+                setVisible(false);
 	}
 	public void btnListarActionPerformed(ActionEvent evt) {
 		new ListarContas().setVisible(true);

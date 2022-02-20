@@ -44,9 +44,9 @@ public class Menu4AbrirConta extends javax.swing.JFrame {
         infoLimite = new javax.swing.JLabel();
         campoLimite = new javax.swing.JTextField();
         aviso = new javax.swing.JLabel();
-        voltar = new javax.swing.JButton();
         confirmar = new javax.swing.JButton();
         avisoErr = new javax.swing.JLabel();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Controle Bancario");
@@ -121,17 +121,6 @@ public class Menu4AbrirConta extends javax.swing.JFrame {
         aviso.setForeground(new java.awt.Color(255, 255, 255));
         aviso.setText("(O limite só será aplicado a coontas especiais)");
 
-        voltar.setBackground(new java.awt.Color(0, 50, 105));
-        voltar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        voltar.setForeground(new java.awt.Color(255, 255, 255));
-        voltar.setText("Voltar");
-        voltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        voltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarActionPerformed(evt);
-            }
-        });
-
         confirmar.setBackground(new java.awt.Color(0, 50, 105));
         confirmar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         confirmar.setForeground(new java.awt.Color(0, 255, 0));
@@ -145,6 +134,17 @@ public class Menu4AbrirConta extends javax.swing.JFrame {
         avisoErr.setBackground(new java.awt.Color(0, 56, 128));
         avisoErr.setForeground(new java.awt.Color(255, 255, 255));
         avisoErr.setText("Preencha todos os campos!");
+
+        voltar.setBackground(new java.awt.Color(0, 50, 105));
+        voltar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        voltar.setForeground(new java.awt.Color(255, 255, 255));
+        voltar.setText("Voltar");
+        voltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuACLayout = new javax.swing.GroupLayout(menuAC);
         menuAC.setLayout(menuACLayout);
@@ -160,10 +160,10 @@ public class Menu4AbrirConta extends javax.swing.JFrame {
                                 .addComponent(subTitulo))
                             .addGap(261, 261, 261))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuACLayout.createSequentialGroup()
-                            .addGroup(menuACLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(menuACLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(menuACLayout.createSequentialGroup()
                                     .addComponent(voltar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(96, 96, 96)
                                     .addComponent(confirmar))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(203, 203, 203)))
@@ -190,7 +190,7 @@ public class Menu4AbrirConta extends javax.swing.JFrame {
                                     .addComponent(radioCorrente))
                                 .addGap(94, 94, 94)
                                 .addComponent(avisoErr)))
-                        .addGap(180, 180, 180))))
+                        .addContainerGap(180, Short.MAX_VALUE))))
         );
         menuACLayout.setVerticalGroup(
             menuACLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,8 +230,8 @@ public class Menu4AbrirConta extends javax.swing.JFrame {
                 .addComponent(aviso)
                 .addGap(49, 49, 49)
                 .addGroup(menuACLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(voltar)
-                    .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(voltar))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
@@ -239,26 +239,20 @@ public class Menu4AbrirConta extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(menuAC, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 38, Short.MAX_VALUE)
+                .addComponent(menuAC, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(menuAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
-        new Menu2Contas().setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_voltarActionPerformed
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         if(campoClint.getText() != null && campoSenha.getText() != null){
@@ -270,11 +264,13 @@ public class Menu4AbrirConta extends javax.swing.JFrame {
                     l.addConta(cC);
                     lC.incrementaContas(lC.getCliente(i));
                     gravarListas();
+                    avisoErr.setText("Conta criada!");
                 }else if(radioPoupanca.isSelected()){
                     ContaPoupanca cP = new ContaPoupanca(lC.getCliente(i), senha);
                     l.addConta(cP);
                     lC.incrementaContas(lC.getCliente(i));
                     gravarListas();
+                    avisoErr.setText("Conta criada!");
                 }else if(radioEspecial.isSelected()){
                     if(campoLimite.getText()!= null){
                         double limite = (double)(Double.parseDouble(campoLimite.getText()));
@@ -282,23 +278,26 @@ public class Menu4AbrirConta extends javax.swing.JFrame {
                         l.addConta(cE);
                         lC.incrementaContas(lC.getCliente(i));
                         gravarListas();
+                        avisoErr.setText("Conta criada!");
                     }else{
                         avisoErr.setText("Informe um limite para conta especial!");
-                    }   
+                    }
                 }else{
                     avisoErr.setText("Selecione um tipo de conta!");
                 }
-            
+
             }else{
-            avisoErr.setText("Cliente indicado não existe!");
-        }
-        
+                avisoErr.setText("Cliente indicado não existe!");
+            }
+
     }//GEN-LAST:event_confirmarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void lerListas() {
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        new Menu2Contas().setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_voltarActionPerformed
+
+    public static void lerListas(){
         		try{
         			Object obj;
         			obj = Arquivo.ler("ListaClientes");

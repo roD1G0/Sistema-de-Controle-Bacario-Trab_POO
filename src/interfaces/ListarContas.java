@@ -63,14 +63,12 @@ public class ListarContas extends javax.swing.JFrame {
             }
         });
 
-        lista.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 56, 105)));
         lista.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = lC.getLista();
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         lista.setFocusable(false);
-        lista.setPreferredSize(new java.awt.Dimension(280, 380));
         lista.setValueIsAdjusting(true);
         jScrollPane1.setViewportView(lista);
 
@@ -83,20 +81,23 @@ public class ListarContas extends javax.swing.JFrame {
                 .addComponent(btnVoltar)
                 .addGap(247, 247, 247))
             .addGroup(panelListaLayout.createSequentialGroup()
-                .addGap(200, 200, 200)
                 .addGroup(panelListaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(190, Short.MAX_VALUE))
+                    .addGroup(panelListaLayout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelListaLayout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         panelListaLayout.setVerticalGroup(
             panelListaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelListaLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
                 .addGap(70, 70, 70))
         );

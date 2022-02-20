@@ -47,10 +47,11 @@ public class ListaContas implements Serializable{
 			if(numero == contas.get(i).getNumeroConta()){
                             try{
                                 contas.get(i).saque(senha, valor, dia.getDay());
+                                return true;
                             }catch(Exception er){
                                 System.err.println(er.getMessage());
                             }
-                            return true;
+                            return false;
 			}
 		}
 		return false;
@@ -61,10 +62,11 @@ public class ListaContas implements Serializable{
 			if(numero == contas.get(i).getNumeroConta()){
                             try{
                                 contas.get(i).deposito(senha, valor, dia.getDay());
+                                return true;
                             }catch(Exception er){
                                 System.out.println(er.getMessage());
                             }
-                            return true;
+                            return false;
 			}
 		}
 		return false;
@@ -121,6 +123,14 @@ public class ListaContas implements Serializable{
 	}
 		return false;
 		
+	}
+        public Cliente getCliente(long numero) {
+		for(int i = 0; i < contas.size(); i++) {
+			if(numero == contas.get(i).getNumeroConta()){
+				return contas.get(i).getCliente();
+			}
+		}
+		return null;
 	}
         public String getSaldoMaior(){
             int maior = 0;
